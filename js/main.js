@@ -351,7 +351,12 @@ function getDb() {
       confirmBtn.disabled = false;
       confirmBtn.textContent = 'Confirmar ✓';
 
-      showToast('Ocorreu um erro ao confirmar. Tente novamente.', 'error');
+      // Código 23505 = violação de restrição UNIQUE no PostgreSQL
+      if (err.code === '23505') {
+        showToast('Esta presença já foi confirmada anteriormente!', 'error');
+      } else {
+        showToast('Ocorreu um erro ao confirmar. Tente novamente.', 'error');
+      }
     }
   });
 
