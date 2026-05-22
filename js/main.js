@@ -319,9 +319,6 @@ function getDb() {
       goToStep(3);
       triggerConfetti();
 
-      // Auto-close after 4 seconds
-      setTimeout(closeModal, 4200);
-
     } catch (err) {
       console.error('[RSVP] Supabase insert error:', err);
       confirmBtn.disabled = false;
