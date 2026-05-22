@@ -200,7 +200,7 @@ body {
 }
 
 .hero-names {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Imperial Script', cursive;
   font-size: clamp(5rem, 14vw, 10rem);
   color: #fff;
   line-height: 1.05;
@@ -479,7 +479,7 @@ body {
 }
 
 .about-quote {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Imperial Script', cursive;
   font-size: 2.4rem;
   color: var(--blue-400);
   margin-bottom: 24px;
@@ -631,7 +631,7 @@ body {
 }
 
 .footer-names {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Imperial Script', cursive;
   font-size: clamp(3rem, 8vw, 5rem);
   color: white;
   margin-bottom: 16px;
