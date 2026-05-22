@@ -279,8 +279,11 @@ function getDb() {
     // Populate summary
     const summaryGuests = document.getElementById('summary-guests');
     summaryGuests.innerHTML = guests
-      .map(name => `<span class="guest-chip">👤 ${escapeHtml(name)}</span>`)
+      .map(name => `<span class="guest-chip"><i data-lucide="user"></i> ${escapeHtml(name)}</span>`)
       .join('');
+
+    // Render lucide icons inserted dynamically
+    lucide.createIcons();
 
     goToStep(2);
   });
@@ -445,3 +448,7 @@ function escapeHtml(str) {
   const map = { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' };
   return str.replace(/[&<>"']/g, c => map[c]);
 }
+
+// ─── LUCIDE ICONS INIT ───────────────────────────────────────────────────────
+// Renders all static <i data-lucide="..."> elements in the HTML
+lucide.createIcons();
