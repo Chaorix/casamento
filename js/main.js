@@ -180,16 +180,40 @@ function getDb() {
   let guestCount = 1; // tracks highest guest index for unique IDs
   let currentStep = 1;
   let preFilledName = null;
+  let maxAdditionalGuests = Infinity; // Infinity means no limit (fallback)
 
-  // Check URL parameter for pre-filled name
+  // Check URL parameter for pre-filled name and limit
   const urlParams = new URLSearchParams(window.location.search);
   const cParam = urlParams.get('c');
   if (cParam) {
     try {
       // decodes Base64 to handle UTF-8 chars correctly
-      preFilledName = decodeURIComponent(escape(atob(cParam)));
+      const decoded = decodeURIComponent(escape(atob(cParam)));
+      const parts = decoded.split('|');
+      preFilledName = parts[0];
+      
+      // If limit is provided, parse it
+      if (parts.length > 1) {
+        maxAdditionalGuests = parseInt(parts[1], 10);
+        if (isNaN(maxAdditionalGuests)) maxAdditionalGuests = Infinity;
+      }
     } catch (e) {
       console.warn('Invalid URL token');
+    }
+  }
+
+  function updateAddGuestBtn() {
+    // Current additional guests = total inputs - 1 (the main guest)
+    const currentAdditional = document.querySelectorAll('.guest-input').length - 1;
+    
+    if (currentAdditional >= maxAdditionalGuests) {
+      addGuestBtn.style.display = 'none';
+    } else {
+      addGuestBtn.style.display = 'block';
+      // Fallback for html styling if it was hidden: inline-block or block
+      if (window.getComputedStyle(addGuestBtn).display !== 'none') {
+         addGuestBtn.style.display = ''; // revert to stylesheet default
+      }
     }
   }
 
@@ -202,6 +226,7 @@ function getDb() {
         firstInput.classList.add('is-locked');
       }
     }
+    updateAddGuestBtn();
   }
 
   // Apply on load
@@ -261,6 +286,9 @@ function getDb() {
   }
 
   function addGuestRow() {
+    const currentAdditional = document.querySelectorAll('.guest-input').length - 1;
+    if (currentAdditional >= maxAdditionalGuests) return;
+
     guestCount++;
     const idx = guestCount;
     const row = document.createElement('div');
@@ -279,9 +307,11 @@ function getDb() {
     `;
     row.querySelector('.btn-remove').addEventListener('click', () => {
       row.remove();
+      updateAddGuestBtn();
     });
     guestList.appendChild(row);
     document.getElementById(`guest-input-${idx}`).focus();
+    updateAddGuestBtn();
   }
 
   addGuestBtn.addEventListener('click', addGuestRow);

@@ -7,7 +7,7 @@
     body { font-family: sans-serif; padding: 40px; background: #f0f8ff; color: #333; max-width: 600px; margin: 0 auto; }
     h1 { color: #2563EB; }
     .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    input[type="text"] { width: 100%; padding: 12px; font-size: 16px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    input[type="text"], input[type="number"] { width: 100%; padding: 12px; font-size: 16px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
     button { background: #2563EB; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 4px; cursor: pointer; }
     button:hover { background: #1D4ED8; }
     .result { margin-top: 20px; padding: 15px; background: #eef6ff; border: 1px dashed #2563EB; border-radius: 4px; word-break: break-all; font-family: monospace; }
@@ -21,7 +21,10 @@
   <p>Digite o nome do convidado principal (ou da família) para gerar o link único criptografado.</p>
 
   <div class="box">
-    <input type="text" id="guestName" placeholder="Ex: João da Silva" />
+    <input type="text" id="guestName" placeholder="Nome do Convidado Principal (Ex: João da Silva)" />
+    <label style="display:block; margin-bottom: 8px; font-size: 0.9rem; color: #555;">Quantos acompanhantes ele pode levar?</label>
+    <input type="number" id="guestLimit" placeholder="0 = convite individual" min="0" value="0" />
+    
     <button onclick="generateLink()">Gerar Link</button>
 
     <div class="result" id="resultBox" style="display: none;">
@@ -36,13 +39,16 @@
 
     function generateLink() {
       const name = document.getElementById('guestName').value.trim();
+      const limit = document.getElementById('guestLimit').value || '0';
+      
       if (!name) {
         alert('Digite um nome!');
         return;
       }
       
-      // Converte para Base64 lidando corretamente com acentos (UTF-8)
-      const encoded = btoa(unescape(encodeURIComponent(name)));
+      // Codifica no formato: "Nome do Convidado|Limite"
+      const dataToEncode = name + '|' + limit;
+      const encoded = btoa(unescape(encodeURIComponent(dataToEncode)));
       
       const fullUrl = BASE_URL + '?c=' + encoded;
       
