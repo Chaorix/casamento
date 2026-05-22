@@ -217,6 +217,20 @@ function getDb() {
     }
   }
 
+  function updateSubtitle() {
+    const subtitle = document.getElementById('modal-subtitle-s1');
+    if (!subtitle) return;
+    
+    if (maxAdditionalGuests === 0) {
+      subtitle.textContent = 'Por favor, confirme sua presença abaixo';
+    } else if (maxAdditionalGuests !== Infinity) {
+      const plural = maxAdditionalGuests > 1 ? 'acompanhantes' : 'acompanhante';
+      subtitle.textContent = `Insira seu nome e o de seus ${maxAdditionalGuests} ${plural}`;
+    } else {
+      subtitle.textContent = 'Insira seu nome e o de seus acompanhantes';
+    }
+  }
+
   function applyPreFilledName() {
     if (preFilledName) {
       const firstInput = document.getElementById('guest-input-0');
@@ -227,10 +241,12 @@ function getDb() {
       }
     }
     updateAddGuestBtn();
+    updateSubtitle();
   }
 
   // Apply on load
   applyPreFilledName();
+  updateSubtitle();
 
   // ── Open / Close ──────────────────────────────────────────────────────────
   function openModal() {
