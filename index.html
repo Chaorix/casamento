@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Confirme sua presença no casamento de Mahiane e Mateus — 07 de Novembro de 2026 no Canto da Sol." />
+  <meta property="og:title" content="Mahiane & Mateus | Casamento 07.11.2026" />
+  <meta property="og:description" content="Você está convidado! Confirme sua presença no nosso grande dia." />
+  <title>Mahiane &amp; Mateus | Casamento</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Supabase JS v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- =====================
+       HERO
+  ===================== -->
+  <section class="hero" id="hero" aria-label="Cabeçalho do convite">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Você está convidado</p>
+
+      <h1 class="hero-names">
+        Mahiane <span class="ampersand">&amp;</span> Mateus
+      </h1>
+
+      <p class="hero-date-line">07 · 11 · 2026</p>
+
+      <p class="hero-subtitle">
+        Estamos emocionados em celebrar este momento tão especial com você ao nosso lado.
+      </p>
+
+      <button class="btn-rsvp" id="rsvp-btn" aria-haspopup="dialog">
+        <span>Confirmar Presença</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Role para baixo</span>
+      <div class="scroll-arrow-wrap"></div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       EVENT DETAILS
+  ===================== -->
+  <section class="event-details" id="detalhes" aria-label="Detalhes do evento">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">
+          O Grande Dia
+          <span class="section-title-bar"></span>
+        </h2>
+        <p class="section-subtitle">Anote na agenda e venha celebrar conosco</p>
+      </div>
+
+      <div class="details-grid">
+        <!-- Data -->
+        <div class="detail-card" data-animate>
+          <div class="detail-icon-wrap">📅</div>
+          <p class="detail-label">Data</p>
+          <p class="detail-value">07 de Novembro<br>de 2026</p>
+          <p class="detail-extra">Sábado</p>
+        </div>
+
+        <!-- Local — destaque -->
+        <div class="detail-card card-featured" data-animate>
+          <div class="detail-icon-wrap">📍</div>
+          <p class="detail-label">Local</p>
+          <p class="detail-value">Canto da Sol</p>
+          <p class="detail-extra">Local da cerimônia e recepção</p>
+        </div>
+
+        <!-- Horário -->
+        <div class="detail-card" data-animate>
+          <div class="detail-icon-wrap">🕒</div>
+          <p class="detail-label">Horário</p>
+          <p class="detail-value">15h00</p>
+          <p class="detail-extra">Cerimônia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       ABOUT US
+  ===================== -->
+  <section class="about-us" id="sobre" aria-label="Nossa história">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">
+          Nossa História
+          <span class="section-title-bar"></span>
+        </h2>
+        <p class="section-subtitle">Um pouco sobre o casal</p>
+      </div>
+
+      <div class="about-content">
+        <!-- Text -->
+        <div class="about-text" data-animate-left>
+          <p class="about-quote">Uma história de amor…</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
+          </p>
+        </div>
+
+        <!-- Carousel -->
+        <div class="carousel-wrap" data-animate-right>
+          <div class="carousel" id="main-carousel" role="region" aria-label="Fotos do casal">
+            <div class="carousel-track" id="carousel-track">
+              <div class="carousel-slide">
+                <img src="assets/photos/photo1.jpg" alt="Foto do casal 1" loading="lazy" />
+              </div>
+              <div class="carousel-slide">
+                <img src="assets/photos/photo2.jpg" alt="Foto do casal 2" loading="lazy" />
+              </div>
+              <div class="carousel-slide">
+                <img src="assets/photos/photo3.jpg" alt="Foto do casal 3" loading="lazy" />
+              </div>
+              <div class="carousel-slide">
+                <img src="assets/photos/photo4.jpg" alt="Foto do casal 4" loading="lazy" />
+              </div>
+              <div class="carousel-slide">
+                <img src="assets/photos/photo5.jpg" alt="Foto do casal 5" loading="lazy" />
+              </div>
+              <div class="carousel-slide">
+                <img src="assets/photos/photo6.jpg" alt="Foto do casal 6" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- Prev -->
+            <button class="carousel-btn prev" id="carousel-prev" aria-label="Foto anterior">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <!-- Next -->
+            <button class="carousel-btn next" id="carousel-next" aria-label="Próxima foto">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
+            <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Selecionar foto"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       FOOTER
+  ===================== -->
+  <footer class="footer" role="contentinfo">
+    <p class="footer-names">Mahiane <span class="ampersand">&amp;</span> Mateus</p>
+    <div class="footer-divider"></div>
+    <p class="footer-info">07 · 11 · 2026 &nbsp;·&nbsp; Canto da Sol</p>
+  </footer>
+
+
+  <!-- =====================
+       RSVP MODAL
+  ===================== -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title-s1">
+
+    <div class="modal" id="rsvp-modal">
+
+      <!-- Close -->
+      <button class="modal-close" id="modal-close" aria-label="Fechar">&#215;</button>
+
+      <!-- Progress dots -->
+      <div class="modal-progress" aria-hidden="true">
+        <div class="modal-progress-dot active" id="prog-1"></div>
+        <div class="modal-progress-dot"        id="prog-2"></div>
+        <div class="modal-progress-dot"        id="prog-3"></div>
+      </div>
+
+
+      <!-- ======  STEP 1: Guest names  ====== -->
+      <div class="modal-step active" id="step-1">
+        <div class="modal-step-header">
+          <h2 id="modal-title-s1">Confirmar Presença</h2>
+          <p>Insira seu nome e o de seus acompanhantes</p>
+        </div>
+
+        <div class="guest-list" id="guest-list">
+          <!-- Row 1 (main guest) -->
+          <div class="guest-row" id="guest-row-0">
+            <input
+              class="guest-input"
+              id="guest-input-0"
+              type="text"
+              placeholder="Seu nome completo"
+              autocomplete="name"
+              aria-label="Seu nome completo"
+            />
+          </div>
+        </div>
+
+        <p class="error-msg" id="error-name">Por favor, insira ao menos um nome.</p>
+
+        <button class="btn-add-guest" id="add-guest-btn">
+          ＋ Adicionar acompanhante
+        </button>
+
+        <div class="modal-actions">
+          <button class="btn-primary-modal" id="step1-next">
+            Ver Resumo
+          </button>
+        </div>
+      </div>
+
+
+      <!-- ======  STEP 2: Confirmation summary  ====== -->
+      <div class="modal-step" id="step-2">
+        <div class="modal-step-header">
+          <h2 id="modal-title-s2">Revisar Confirmação</h2>
+          <p>Verifique as informações antes de confirmar</p>
+        </div>
+
+        <!-- Guests summary -->
+        <div class="summary-box">
+          <p class="summary-label">Convidado(s)</p>
+          <div class="summary-guests-list" id="summary-guests"></div>
+        </div>
+
+        <!-- Event details -->
+        <div class="summary-event-details">
+          <div class="summary-event-row">
+            <span class="summary-event-icon">📅</span>
+            <strong>07 de Novembro de 2026</strong>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">— Sábado</span>
+          </div>
+          <div class="summary-event-row">
+            <span class="summary-event-icon">📍</span>
+            <strong>Canto da Sol</strong>
+          </div>
+          <div class="summary-event-row">
+            <span class="summary-event-icon">🕒</span>
+            <strong>15h00</strong>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">— Cerimônia</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-secondary-modal" id="step2-back">Voltar</button>
+          <button class="btn-primary-modal" id="step2-confirm">Confirmar ✓</button>
+        </div>
+      </div>
+
+
+      <!-- ======  STEP 3: Success  ====== -->
+      <div class="modal-step" id="step-3">
+        <div class="success-wrap">
+          <div class="success-icon-ring" aria-hidden="true">💍</div>
+          <h2>Presença Confirmada!</h2>
+          <p>
+            Obrigado! Mal podemos esperar para celebrar este momento incrível com você.
+          </p>
+          <div class="success-date-banner">
+            📅 &nbsp; 07 de Novembro de 2026 · 15h · Canto da Sol
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.modal -->
+  </div><!-- /.modal-overlay -->
+
+
+  <!-- Confetti container (outside modal) -->
+  <div id="confetti-container" aria-hidden="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

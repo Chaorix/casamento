@@ -1,0 +1,61 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# GitHub Actions — Deploy Mahiane & Mateus Wedding RSVP to GitHub Pages
+#
+# Secrets required (Settings → Secrets and variables → Actions):
+#   SUPABASE_URL       → Your Supabase project URL
+#   SUPABASE_ANON_KEY  → Your Supabase anon/public key
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: Deploy Wedding Site
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "github-pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ─────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Inject secrets into main.js ──────────────────────────────────────
+      - name: Inject Supabase credentials
+        env:
+          SUPABASE_URL:      ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          sed -i "s|__SUPABASE_URL__|${SUPABASE_URL}|g"           js/main.js
+          sed -i "s|__SUPABASE_ANON_KEY__|${SUPABASE_ANON_KEY}|g" js/main.js
+          echo "✅ Credentials injected successfully."
+
+      # ── 3. Configure GitHub Pages ────────────────────────────────────────────
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # ── 4. Upload site artifact ──────────────────────────────────────────────
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      # ── 5. Deploy ────────────────────────────────────────────────────────────
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
