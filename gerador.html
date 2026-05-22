@@ -16,6 +16,15 @@
   </style>
 </head>
 <body>
+  <!-- Overlay de Senha -->
+  <div id="loginOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#f0f8ff; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div class="box" style="text-align:center;">
+      <h2 style="margin-top:0;">Área Restrita</h2>
+      <p style="font-size:0.9rem; color:#555;">Digite a senha para acessar o gerador</p>
+      <input type="password" id="passInput" placeholder="Senha" />
+      <button onclick="checkPass()" style="width:100%;">Entrar</button>
+    </div>
+  </div>
 
   <h1>Gerador de Convite VIP</h1>
   <p>Digite o nome do convidado principal (ou da família) para gerar o link único criptografado.</p>
@@ -34,6 +43,19 @@
   </div>
 
   <script>
+    // === SENHA DE ACESSO AO GERADOR ===
+    const SENHA_GERADOR = 'casamento2026'; // <--- VOCÊ PODE MUDAR A SENHA AQUI
+
+    function checkPass() {
+      const input = document.getElementById('passInput').value;
+      if (input === SENHA_GERADOR) {
+        document.getElementById('loginOverlay').style.display = 'none';
+      } else {
+        alert('Senha incorreta!');
+        document.getElementById('passInput').value = '';
+      }
+    }
+
     // Altere aqui se o seu site GitHub Pages tiver outro endereço principal
     const BASE_URL = window.location.href.replace('gerador.html', '');
 
