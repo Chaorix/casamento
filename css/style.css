@@ -460,54 +460,23 @@ body {
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin-top: 72px;
 }
 
-.about-text {
-  opacity: 0;
-  transform: translateX(-36px);
-}
-
-.about-text.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-}
-
-.about-quote {
-  font-family: 'Imperial Script', cursive;
-  font-size: 2.4rem;
-  color: var(--blue-400);
-  margin-bottom: 24px;
-  line-height: 1.2;
-}
-
-.about-text p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: var(--text-mid);
-  line-height: 1.95;
-  margin-bottom: 22px;
-}
-
-.about-text p:last-child {
-  margin-bottom: 0;
-}
-
 /* ===== CAROUSEL ===== */
 .carousel-wrap {
+  width: 100%;
+  max-width: 480px;
   opacity: 0;
-  transform: translateX(36px);
+  transform: translateY(36px);
 }
 
 .carousel-wrap.is-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
   transition: opacity 0.8s var(--ease) 0.15s, transform 0.8s var(--ease) 0.15s;
 }
 
