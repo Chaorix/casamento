@@ -179,6 +179,33 @@ function getDb() {
 
   let guestCount = 1; // tracks highest guest index for unique IDs
   let currentStep = 1;
+  let preFilledName = null;
+
+  // Check URL parameter for pre-filled name
+  const urlParams = new URLSearchParams(window.location.search);
+  const cParam = urlParams.get('c');
+  if (cParam) {
+    try {
+      // decodes Base64 to handle UTF-8 chars correctly
+      preFilledName = decodeURIComponent(escape(atob(cParam)));
+    } catch (e) {
+      console.warn('Invalid URL token');
+    }
+  }
+
+  function applyPreFilledName() {
+    if (preFilledName) {
+      const firstInput = document.getElementById('guest-input-0');
+      if (firstInput) {
+        firstInput.value = preFilledName;
+        firstInput.setAttribute('readonly', 'true');
+        firstInput.classList.add('is-locked');
+      }
+    }
+  }
+
+  // Apply on load
+  applyPreFilledName();
 
   // ── Open / Close ──────────────────────────────────────────────────────────
   function openModal() {
@@ -351,6 +378,9 @@ function getDb() {
     // Restore confirm button
     step2Confirm.disabled = false;
     step2Confirm.textContent = 'Confirmar ✓';
+
+    // Re-apply pre-filled name if exists
+    applyPreFilledName();
   }
 })();
 
