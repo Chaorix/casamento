@@ -126,10 +126,10 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 15% 40%, rgba(96, 165, 250, 0.22) 0%, transparent 65%),
-    radial-gradient(ellipse 70% 50% at 85% 20%, rgba(125, 211, 252, 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 15% 45%, rgba(96, 165, 250, 0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 85% 30%, rgba(125, 211, 252, 0.20) 0%, transparent 60%),
     radial-gradient(ellipse 60% 70% at 50% 110%, rgba(37, 99, 235, 0.25) 0%, transparent 60%),
-    linear-gradient(150deg, #0D2137 0%, #1E3A8A 35%, #1D4ED8 65%, #0EA5E9 100%);
+    linear-gradient(180deg, #0D2137 0%, #0D2137 90px, #1E3A8A 45%, #1D4ED8 75%, #0EA5E9 100%);
   z-index: 0;
 }
 
@@ -155,7 +155,7 @@ body {
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, rgba(96, 165, 250, 0.18), transparent 70%);
-  top: -100px;
+  top: 0px;
   left: -150px;
   animation: float 12s ease-in-out infinite;
 }
