@@ -70,7 +70,7 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg-main);
+  background-color: #0D2137;
   color: var(--text-dark);
   line-height: 1.65;
   overflow-x: hidden;
@@ -119,7 +119,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 80px 24px 120px;
+  padding: calc(80px + env(safe-area-inset-top, 0px)) 24px calc(120px + env(safe-area-inset-bottom, 0px));
 }
 
 .hero-bg {
