@@ -246,11 +246,6 @@ function getDb() {
 
   // Apply on load
   applyPreFilledName();
-
-  // Esconde o botão de confirmar presença se não houver um link válido
-  if (!preFilledName && rsvpBtn) {
-    rsvpBtn.style.display = 'none';
-  }
   updateSubtitle();
 
   // ── Open / Close ──────────────────────────────────────────────────────────
